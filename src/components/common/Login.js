@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const Login = () => {
+function Login(props) {
   const dispatch = useDispatch();
 
   const [state, setState] = React.useState({
@@ -35,8 +35,8 @@ const Login = () => {
       localStorage.password = "";
       localStorage.isChecked = "";
     }
-    dispatch(loginActions.setLoginDetails(user_data));
-    dispatch(loginActions.vertifyLogin(user_data));
+    //dispatch(loginActions.setLoginDetails(user_data));
+    //dispatch(loginActions.vertifyLogin(user_data));
   };
   return (
     <div className="flex items-center justify-center h-screen">

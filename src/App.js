@@ -1,15 +1,17 @@
 import "./App.css";
-import Footer from "./common/Footer";
-import Header from "./common/Header";
-import Login from "./common/Login";
+import Login from "./components/common/login-test";
+import Home from "./components/Home/HomePage";
+// import PrivateRoute from "./PrivateRoute";
+import { Route, Routes } from "react-router-dom";
+import { useSelectot } from "react-redux";
+
 
 function App() {
   return (
-    <div className="App">
-      <Login />
-      <Header />
-      <Footer />
-    </div>
+	  <Routes>
+		<Route path="/"  element={<Login/>}></Route>
+		<Route path="/home"  element={<Home/>}></Route>
+	</Routes>
   );
 }
 
