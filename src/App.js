@@ -1,5 +1,5 @@
 import "./App.css";
-import Login from "./components/common/login-test";
+import Login from "./components/common/Login";
 import Home from "./components/Home/HomePage";
 // import PrivateRoute from "./PrivateRoute";
 import { Route, Routes } from "react-router-dom";
@@ -10,7 +10,7 @@ function App() {
   return (
 	  <Routes>
 		<Route path="/"  element={<Home/>}></Route>
-		{/* <Route path="/home"  element={<Home/>}></Route> */}
+		<Route path="/login"  element={<Login/>}></Route>
 	</Routes>
   );
 }

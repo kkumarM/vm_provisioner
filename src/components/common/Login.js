@@ -1,44 +1,40 @@
-// Login.js
+// login-test.js
+
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import * as loginActions from "../../actions/loginAction"
 
-function Login(props) {
-  const dispatch = useDispatch();
 
-  const [state, setState] = React.useState({
-    username: "",
-    password: "",
-    isChecked: false,
-  });
+const Login = () => {
+	const dispatch = useDispatch();
+	const [state, setState] = React.useState({
+	username: "",
+	password: "",
+	isChecked: false,
 
-  const handleEmail = (e) => {
-    setState({ ...state, username: e.target.value });
-  };
+	});
 
-  const handlePassword = (e) => {
-    setState({ ...state, password: e.target.value });
-  };
+	const handleUsername = (e) => {
+	setState({ ...state, username: e.target.value });
+	};
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let user_data = {
-      username: state.username,
-      password: state.password,
-    };
+	const handlePassword = (e) => {
+	setState({ ...state, password: e.target.value });
+	};
 
-    if (state.username !== "" && state.isChecked !== "") {
-      localStorage.username = state.username;
-      localStorage.password = state.password;
-      localStorage.Checkbox = state.isChecked;
-    } else {
-      localStorage.username = "";
-      localStorage.password = "";
-      localStorage.isChecked = "";
-    }
-    //dispatch(loginActions.setLoginDetails(user_data));
-    //dispatch(loginActions.vertifyLogin(user_data));
-  };
-  return (
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log("username");
+		console.log(state.username);
+		let user_data = {
+		username: state.username,
+		password: state.password,
+		};
+    dispatch(loginActions.setLoginDetails(user_data));
+    dispatch(loginActions.verifyLogin(user_data));
+	}
+	return (
+
     <div className="flex items-center justify-center h-screen">
       <div className="bg-white p-8 shadow-md rounded-md w-96">
         <h2 className="text-2xl font-semibold mb-4">Login</h2>
@@ -53,7 +49,9 @@ function Login(props) {
             <input
               type="text"
               id="username"
-              name="username"
+              //name="username"
+			  value={state.username}
+			  onChange={handleUsername}
               className="mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300"
               placeholder="Enter your username"
             />
@@ -69,6 +67,8 @@ function Login(props) {
               type="password"
               id="password"
               name="password"
+			  value={state.password}
+			  onChange={handlePassword}
               className="mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring focus:border-blue-300"
               placeholder="Enter your password"
             />
@@ -78,8 +78,10 @@ function Login(props) {
               <button
                 type="submit"
                 className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
-              >
-                Submit
+        onClick={(e) => {
+		handleSubmit(e); }}      
+		>
+                Sign In
               </button>
             </div>
             <div>
@@ -95,3 +97,5 @@ function Login(props) {
 };
 
 export default Login;
+
+
