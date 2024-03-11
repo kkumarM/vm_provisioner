@@ -19,8 +19,8 @@ function TabPanel(props) {
 
 const Main = () => {
     const [firstLevelTabValue, setFirtLevelTabValue] = React.useState(0);
-    const [workloadConf, setWorkloadConf] = React.useState(0);
-    const [hardwareConf, setHardwareConf] = React.useState(0);
+    const [workloadConf, setWorkloadConf] = React.useState(undefined);
+    // const [hardwareConf, setHardwareConf] = React.useState(0);
 
 
     const handleTabChange = (event, newValue) => {
@@ -31,23 +31,23 @@ const Main = () => {
         setWorkloadConf(newValue);
     }
 
-    const hardwareConfClick = (event, newValue) => {
-        setHardwareConf(newValue);
-    }
+    // const hardwareConfClick = (event, newValue) => {
+    //     setHardwareConf(newValue);
+    // }
   return (
-    <>
-    <div className='relative py-28 w-screen'> 
+    
+    <div className='relative py-28 justify-center w-screen'> 
         <Grid container spacing={0} alignItems="center" className='flex place-content-center mx-auto w-full rounded-md'>
 
-        <Grid item sm={24} className="space-x-4">
-        <Tabs className='justify-between items-center bg-blue-100 rounded-md'
+        <Grid item sm={6} className="space-x-4">
+        <Tabs className='bg-blue-100 rounded-md'
         value={firstLevelTabValue}
         onChange={handleTabChange}
         indicatorColor='primary'
         >
             <Tab className='hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label = "Workload Configuration" />
             <Tab className='hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label = "Hardware Configuration" />
-            <Tab className='hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label = "Dashboard" />
+            <Tab className='justify-between hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label = "Dashboard" />
 
         </Tabs>
         <TabPanel value={firstLevelTabValue} index={0}>
@@ -65,11 +65,13 @@ const Main = () => {
         </Grid>
             </Grid>
 
-            <TabPanel value={workloadConf} index={0}>
+        <TabPanel value={workloadConf} index={0}>
+            <div className='mt-10 w-50'>
                 <WorkloadConfig />
-            </TabPanel>
+            </div>
+        </TabPanel>
     </div>
-    </>
+    
   )
 }
 

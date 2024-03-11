@@ -2,7 +2,8 @@ import * as actionTypes from "../actions/actionTypes"
 
 const initialState = {
   workload_configuration: {  
-    teams: ""}
+    teams: "",
+    mdap_version: ""}
     
 }; 
 
