@@ -1,5 +1,6 @@
 import React from 'react'
 import { Tabs, Tab, Grid, Typography, Box } from '@material-ui/core'
+import WorkloadConfig from "../WorkloadConfiguration/workload"
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -18,11 +19,16 @@ function TabPanel(props) {
 
 const Main = () => {
     const [firstLevelTabValue, setFirtLevelTabValue] = React.useState(0);
+    const [workloadConf, setWorkloadConf] = React.useState(0);
     const [hardwareConf, setHardwareConf] = React.useState(0);
 
 
     const handleTabChange = (event, newValue) => {
         setFirtLevelTabValue(newValue);
+    }
+
+    const workloadConfClick = (event, newValue) => {
+        setWorkloadConf(newValue);
     }
 
     const hardwareConfClick = (event, newValue) => {
@@ -39,15 +45,15 @@ const Main = () => {
         onChange={handleTabChange}
         indicatorColor='primary'
         >
-            <Tab className='hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label = "Hardware Configuration" />
             <Tab className='hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label = "Workload Configuration" />
+            <Tab className='hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label = "Hardware Configuration" />
             <Tab className='hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label = "Dashboard" />
 
         </Tabs>
         <TabPanel value={firstLevelTabValue} index={0}>
             <Tabs 
-            value={hardwareConf}
-            onChange={hardwareConfClick}
+            value={workloadConf}
+            onChange={workloadConfClick}
             indicatorColor='primary'
             variant='fullwidth'
             className='className="bg-purple-400 rounded-md'
@@ -59,8 +65,8 @@ const Main = () => {
         </Grid>
             </Grid>
 
-            <TabPanel value={hardwareConf} index={0}>
-                <h1>List of items</h1>
+            <TabPanel value={workloadConf} index={0}>
+                <WorkloadConfig />
             </TabPanel>
     </div>
     </>
