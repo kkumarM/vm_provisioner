@@ -14,7 +14,11 @@ export default function workloadReducer(state = initialState, action) {
             ...state,
             workload_configuration: action.payload,
         }; 
-
+        case actionTypes.SET_VERSION_VALUES:
+            return {
+                ...state,
+                workload_configuration: action.payload,
+            }
         default:
             return state;
     }

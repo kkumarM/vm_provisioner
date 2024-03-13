@@ -7,3 +7,10 @@ export const setTeamConfvalues = (config_values) => {
         payload: config_values
     }
 }
+
+export const setVersionConfvalues = (version) => {
+    return {
+        type: actionTypes.SET_VERSION_VALUES,
+        payload: version
+    }
+}

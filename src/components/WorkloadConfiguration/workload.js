@@ -5,6 +5,7 @@ import {
     FormLabel,
     NativeSelect,
     FormGroup,
+    Box,
 } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { Select, Option } from "@material-tailwind/react";
@@ -19,7 +20,6 @@ function WorkloadConfig(props) {
         let config_values = workload_configuration;        
 
         config_values = { ...config_values, teams: e.target.value };
-        console.log(workload_configuration, "conf values")
         dispatch(workloadAction.setTeamConfvalues(config_values))
     }
 
@@ -27,7 +27,8 @@ function WorkloadConfig(props) {
         let version = workload_configuration;        
 
         version = { ...version, mdap_version: e.target.value };
-        dispatch(workloadAction.setTeamConfvalues(version))
+        console.log(version, "conf values")
+        dispatch(workloadAction.setVersionConfvalues(version))
     }
     return (
         
@@ -37,7 +38,7 @@ function WorkloadConfig(props) {
             <div className="flex w-full justify-between">
                 <FormGroup row className="flex justify-between">                 
 
-                    <FormLabel className="font-bold text-2xl mt-2 ">Team :</FormLabel>
+                    <FormLabel className="font-bold text-2xl mt-2 mx-10">Team :</FormLabel>
                     
                     <FormControl className="flex">
                         <NativeSelect
@@ -73,24 +74,20 @@ function WorkloadConfig(props) {
 
                 <FormGroup row className="flex  justify-between">
 
-                    <FormLabel className="font-bold text-2xl mt-12 mx-10">Mdap Version :</FormLabel>
+                    <FormLabel className="font-bold text-2xl mt-2 mx-10">Mdap Version :</FormLabel>
                     
                     <FormControl className="flex">
                         <NativeSelect
-                        value={workload_configuration.teams}
+                        value={workload_configuration.version}
                         onChange={(e) => handleVersionConfig(e)}
                         name="teams"
                         variant="standard"
-                        className="bg-red shadow-md shadow-blue-300 rounded-sm bg-slate-400 px-2 w-72 mt-10"
+                        className="bg-red shadow-md shadow-blue-300 rounded-sm bg-slate-400 px-2 w-72"
                         >           
-                        <option value="IQEG">IQEG</option>
-                        <option value="CQI">CQI</option>
-                        <option value="DeviceVue">DeviceVue</option>
-                        <option value="S3">S3</option>
-                        <option value="Automation">Automation</option>
-                        <option value="QA & Verification">QA & Verification</option>
-                        <option value="INDA">INDA</option>
-                        <option value="HCL-Pump">HCL-Pump</option>
+                        <option value="3.1.0">3.1.0</option>
+                        <option value="4.1.6">4.1.6</option>
+                        <option value="4.2.3">4.2.3</option>
+                        <option value="4.3">4.3</option>
                          {/* {        
                              teams.map((item, index) => {
                                  return (
@@ -107,9 +104,14 @@ function WorkloadConfig(props) {
                     </FormControl>
 
                 </FormGroup>
+
+                
             </div>
         </div>
-        </div>
+    
+    
+    
+    </div>
         
     ); 
     // return (
