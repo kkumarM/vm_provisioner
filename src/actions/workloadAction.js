@@ -14,3 +14,10 @@ export const setVersionConfvalues = (version) => {
         payload: version
     }
 }
+
+export const setCommentValue = (comment) => {
+    return {
+        type: actionTypes.SET_COMMENT_VALUE,
+        payload: comment
+    }
+}

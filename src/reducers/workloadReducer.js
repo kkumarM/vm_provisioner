@@ -3,7 +3,8 @@ import * as actionTypes from "../actions/actionTypes"
 const initialState = {
   workload_configuration: {  
     teams: "",
-    mdap_version: ""}
+    mdap_version: "",
+    comment: ""}
     
 }; 
 
@@ -19,6 +20,11 @@ export default function workloadReducer(state = initialState, action) {
                 ...state,
                 workload_configuration: action.payload,
             }
+            case actionTypes.SET_COMMENT_VALUE:
+                return {
+                    ...state,
+                    workload_configuration: action.payload,
+                }
         default:
             return state;
     }

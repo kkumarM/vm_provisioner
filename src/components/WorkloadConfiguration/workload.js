@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
     Grid,
     FormControl,
@@ -6,6 +6,8 @@ import {
     NativeSelect,
     FormGroup,
     Box,
+    Typography,
+    TextField,
 } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { Select, Option } from "@material-tailwind/react";
@@ -13,6 +15,7 @@ import * as workloadAction from "../../actions/workloadAction"
 
 function WorkloadConfig(props) {
     const dispatch = useDispatch();
+    const [submit, SetSubmit] = useState();
 
     const { workload_configuration } = useSelector((state) => state.workload_parameters)
     
@@ -30,7 +33,19 @@ function WorkloadConfig(props) {
         console.log(version, "conf values")
         dispatch(workloadAction.setVersionConfvalues(version))
     }
-    return (
+
+    const handleComment = (e) => {
+        let comment = workload_configuration;
+        comment = { ...comment, comment: e.target.value };
+        dispatch(workloadAction.setCommentValue(comment))
+    }
+
+    const handleSubmit = () => {
+        SetSubmit()
+        console.log("Button Clicked")
+
+    }
+       return (
         
         <div className="flex py-10 px-20  mx-auto justify-between items-center">
 
@@ -107,8 +122,28 @@ function WorkloadConfig(props) {
 
                 
             </div>
+            <Grid conainer className="w-full mt-10">
+                <Grid item xs={12}>
+                    <Typography variant="h8">Additional Comments:</Typography>
+                    <div className="mx-auto">
+
+                    <TextField 
+                    fullWidth
+                    name="comments"
+                    value={workload_configuration.comments}
+                    onChange={(e) => handleComment(e)}
+                    variant="outlined"
+                    
+                    />                        
+                    </div>
+                </Grid>
+            </Grid>
+            <div className=" px-80 mt-10 mx-auto">
+            <button className="bg-blue-500 rounded-xl px-4 py-2 text-white"
+            onClick={() => handleSubmit()}>Submit</button>
+            </div>                            
         </div>
-    
+
     
     
     </div>
