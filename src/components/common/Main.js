@@ -1,6 +1,7 @@
 import React from 'react'
 import { Tabs, Tab, Grid, Typography, Box } from '@material-ui/core'
 import WorkloadConfig from "../WorkloadConfiguration/workload"
+import VM from "../HardwareConfiguration/VM"
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -70,7 +71,12 @@ const Main = () => {
                 <WorkloadConfig />
             </div>
         </TabPanel>
-    </div>
+        <TabPanel value={firstLevelTabValue} index={1}>
+            <div className='mt-10 w-50'>
+                <VM />
+            </div>
+        </TabPanel>
+        </div>
     
   )
 }
