@@ -6,7 +6,10 @@ import VM from "../HardwareConfiguration/VM"
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
     return (
-        <div>
+        <div 
+        role="tabpanel"
+        hidden={value !== index}
+        {...other}>
             {value === index && (
                 <Box>
                     <Typography component="div" className='mainPadding'>
@@ -21,20 +24,35 @@ function TabPanel(props) {
 const Main = () => {
     const [firstLevelTabValue, setFirtLevelTabValue] = React.useState(0);
     const [workloadConf, setWorkloadConf] = React.useState(undefined);
-    // const [hardwareConf, setHardwareConf] = React.useState(0);
+    const [hardwareConf, setHardwareConf] = React.useState(0);
 
 
     const handleTabChange = (event, newValue) => {
         setFirtLevelTabValue(newValue);
+
+        if (newValue === 0) {
+            setWorkloadConf(0);
+            setHardwareConf();
+        } else {
+            setHardwareConf(0);
+            setWorkloadConf();
+        }
     }
+
+
 
     const workloadConfClick = (event, newValue) => {
         setWorkloadConf(newValue);
     }
 
-    // const hardwareConfClick = (event, newValue) => {
-    //     setHardwareConf(newValue);
-    // }
+    const hardwareConfClick = (event, newValue) => {
+        setHardwareConf(newValue);
+    }
+
+    const dashboardClick = (event, newValue) => {
+
+    }
+
   return (
     
     <div className='relative py-28 justify-center w-screen'> 

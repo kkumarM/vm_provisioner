@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import {
 	Grid,
@@ -17,6 +17,8 @@ import Moment from "moment";
 import * as hardwareActions from "../../actions/hardwareActions";
 import { useDispatch, useSelector } from "react-redux";
 import { Radio } from "@material-ui/core";
+import DateFnsUtils from '@date-io/date-fns';
+import { subMonths, addMonths } from "date-fns";
 
 
 function VM(){
@@ -41,14 +43,27 @@ function VM(){
 
 
 	const { vm_rows, vm_rows_status } = useSelector((state) => state.hardware_parameters);
+	
 	const isSelected = (System_ID) => selected_hardware.indexOf(System_ID) !== -1;
 
 	const [selectedDate, setSelectedDate] = React.useState('');
 
 	const handleDateChange = (date) => {
 		setSelectedDate(date);
-		dispatch(hardwareActions.updateReservation(Moment(date).format("YYYY/MM/DD hh:mm:ss A")));
+		dispatch(hardwareActions.updateReservation(Moment(date).format("YYYY/MM/DD hh:mm:ss")));
 	};
+
+	const handleClick = (event, row) => {
+		let newSelected = selected_hardware;
+		if (selected_hardware !== row.System_ID && row.Status === 'Available') { 
+			newSelected = row.System_ID; 
+			setSelectedDate(new Date(new Date().getTime() + 24 * 60 * 60 * 1000));
+		}
+
+		dispatch(hardwareActions.updateHardwares(newSelected));
+	}; 
+
+	 
 	
 	const hardware_data = () => {
 		let filtered_data;
@@ -132,6 +147,11 @@ function VM(){
 			</TableBody>
 		);
 	};
+	useEffect(() => {
+		const vm_data = () => dispatch(hardwareActions.getVMList());
+		vm_data();
+		
+	  }, [reservation])
 	
 }
 

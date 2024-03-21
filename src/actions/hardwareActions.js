@@ -1,6 +1,14 @@
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
 
+
+export const updateHardwares = (hardwares) => {
+    return {
+        type: actionTypes.UPDATE_VM_HARDWARES,
+        payload: hardwares,
+    }
+}
+
 export const updateReservation = (reservation) => {
     return {
         type : actionTypes.RESERVATION,
