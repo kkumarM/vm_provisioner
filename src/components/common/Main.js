@@ -2,14 +2,15 @@ import React from 'react'
 import { Tabs, Tab, Grid, Typography, Box } from '@material-ui/core'
 import WorkloadConfig from "../WorkloadConfiguration/workload"
 import VM from "../HardwareConfiguration/VM"
+import TableTest from '../HardwareConfiguration/TableTest'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
     return (
-        <div 
-        role="tabpanel"
-        hidden={value !== index}
-        {...other}>
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            {...other}>
             {value === index && (
                 <Box>
                     <Typography component="div" className='mainPadding'>
@@ -53,50 +54,56 @@ const Main = () => {
 
     }
 
-  return (
-    
-    <div className='relative py-28 justify-center w-screen'> 
-        <Grid container spacing={0} alignItems="center" className='flex place-content-center mx-auto w-full rounded-md'>
+    return (
 
-        <Grid item sm={6} className="space-x-4">
-        <Tabs className='bg-blue-100 rounded-md'
-        value={firstLevelTabValue}
-        onChange={handleTabChange}
-        indicatorColor='primary'
-        >
-            <Tab className='hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label = "Workload Configuration" />
-            <Tab className='hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label = "Hardware Configuration" />
-            <Tab className='justify-between hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label = "Dashboard" />
+        <div className='flex-row py-28'>
+            <div className='container place-items-center mx-auto space-x-4 border border-blue-400'>
+                {/* <Grid container spacing={0} alignItems="center" className='flex place-content-center mx-auto w-full rounded-md'> */}
 
-        </Tabs>
-        <TabPanel value={firstLevelTabValue} index={0}>
-            <Tabs 
-            value={workloadConf}
-            onChange={workloadConfClick}
-            indicatorColor='primary'
-            variant='fullwidth'
-            className='className="bg-purple-400 rounded-md'
-            > 
-                <Tab className="bg-purple-400 rounded-md" label="Select Workload Type" />
+                {/* <Grid item sm={6} className="space-x-4"> */}
+                <div className='w-4/5 mx-auto'>
+                    <Tabs className='bg-blue-100 rounded-md'
+                        value={firstLevelTabValue}
+                        onChange={handleTabChange}
+                        indicatorColor='primary'
+                    >
+                        {/* <div className='w-1/2 mx-auto border border-red-600'> */}
 
-            </Tabs>
-        </TabPanel>
-        </Grid>
-            </Grid>
+                        <Tab className='w-full hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label="Workload Configuration" />
+                        <Tab className='w-full hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label="Hardware Configuration" />
+                        <Tab className='w-full hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label="Dashboard" />
+                        {/* </div> */}
 
-        <TabPanel value={workloadConf} index={0}>
-            <div className='mt-10 w-50'>
-                <WorkloadConfig />
+                    </Tabs>
+                    <TabPanel value={firstLevelTabValue} index={0}>
+                        <Tabs
+                            value={workloadConf}
+                            onChange={workloadConfClick}
+                            indicatorColor='primary'
+                            variant='fullwidth'
+                            className='className="bg-purple-400 rounded-md'
+                        >
+                            <Tab className="bg-purple-400 rounded-md" label="Select Workload Type" />
+
+                        </Tabs>
+                    </TabPanel>
+                    {/* </Grid> */}
+                    {/* </Grid> */}
+
+                    <TabPanel value={workloadConf} index={0}>
+                        <div className='mt-10 mx-auto'>
+                            <WorkloadConfig />
+                        </div>
+                    </TabPanel>
+                    <TabPanel value={firstLevelTabValue} index={1}>
+                        <div className='mt-10 mx-auto'>
+                            <TableTest />
+                        </div>
+                    </TabPanel>
+                </div>
+                </div>
             </div>
-        </TabPanel>
-        <TabPanel value={firstLevelTabValue} index={1}>
-            <div className='mt-10 w-50'>
-                <VM />
-            </div>
-        </TabPanel>
-        </div>
-    
-  )
+            )
 }
 
-export default Main
+            export default Main

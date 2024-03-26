@@ -47,7 +47,7 @@ function WorkloadConfig(props) {
     }
        return (
         
-        <div className="flex py-10 px-20  mx-auto justify-between items-center">
+        <div className="flex py-10 mx-auto justify-between items-center">
 
         <div container id="edge_container" className="px-4  mx-auto border border-red-500">
             <div className="flex w-full justify-between">

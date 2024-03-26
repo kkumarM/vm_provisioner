@@ -2,7 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 import Moment from "moment"; 
 
 const initialState = {
-    vm_rows: {},
+    vm_rows: [],
     vm_rows_status: 400,
     selected_hardware: "",
     reservation: Moment(new Date(new Date().getTime() + 24 * 60 * 60 * 1000)).format('YYYY/MM/DD hh:mm:ss'),

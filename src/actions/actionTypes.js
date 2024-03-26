@@ -1,5 +1,5 @@
 
-export const BASE_URL = "http://localhost:5000/";
+export const BASE_URL = "http://localhost:5001/";
 
 export const SET_LOGIN_DETAILS = "SET_LOGIN_DETAILS";
 

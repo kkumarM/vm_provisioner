@@ -18,12 +18,13 @@ export const updateReservation = (reservation) => {
 
 export const getVMList = () => {
     let username = localStorage.getItem("user");
-    const headers = {
-        'Authorization': 'Bearer' + localStorage.getItem('authorization'),
-    }
+    //let username = "karthik"
+    // const headers = {
+    //     'Authorization': 'Bearer' + localStorage.getItem('authorization'),
+    // }
     return (dispatch) => {
         axios
-        .get(actionTypes.BASE_URL + "select_hw?user=" + username,{headers: headers})
+        .get(actionTypes.BASE_URL + "select_hw?user=" + username)
         .then((response) => {
             console.log(response, "vm list success response")
             dispatch({

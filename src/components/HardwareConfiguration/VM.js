@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Radio } from "@material-ui/core";
 import DateFnsUtils from '@date-io/date-fns';
 import { subMonths, addMonths } from "date-fns";
+import { TabPanel } from "@material-tailwind/react";
 
 
 function VM(){
@@ -152,7 +153,18 @@ function VM(){
 		vm_data();
 		
 	  }, [reservation])
+
+	  return (
+		<Grid>
+			<Grid item sm={12}>
+				{vm_rows_status === 400}
+				<TableContainer>
+					<Table aria-label="simple table" stickyHeader>
+					</Table>
+				</TableContainer>
+			</Grid>
+		</Grid>
+	  )
 	
 }
-
 export default VM;
