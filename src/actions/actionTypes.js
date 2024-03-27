@@ -19,4 +19,17 @@ export const VM_LIST = "VM_LIST";
 
 export const RESERVATION = "RESERVATION";
 
+export const PROVISIONING_STATUS = "PROVISIONING_STATUS";
+
+export const SET_BENCHMARK_STATUS = "SET_BENCHMARK_STATUS";
+
+export const APPEND_JOB = "APPEND_JOB";
+
+export const UPDATE_JOBS_ARRAY = "UPDATE_JOBS_ARRAY";
+
+export const VM_START = "VM_START";
+
+export const VM_STOP = "VM_STOP";
+
+export const VM_RESET = "VM_RESET";
 

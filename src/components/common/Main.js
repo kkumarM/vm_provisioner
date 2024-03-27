@@ -3,6 +3,7 @@ import { Tabs, Tab, Grid, Typography, Box } from '@material-ui/core'
 import WorkloadConfig from "../WorkloadConfiguration/workload"
 import VM from "../HardwareConfiguration/VM"
 import TableTest from '../HardwareConfiguration/TableTest'
+import Dashboard from '../SummaryConfiguration/Dashboard'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -26,6 +27,7 @@ const Main = () => {
     const [firstLevelTabValue, setFirtLevelTabValue] = React.useState(0);
     const [workloadConf, setWorkloadConf] = React.useState(undefined);
     const [hardwareConf, setHardwareConf] = React.useState(0);
+    const [summary, setSummary] = React.useState(0);
 
 
     const handleTabChange = (event, newValue) => {
@@ -34,9 +36,15 @@ const Main = () => {
         if (newValue === 0) {
             setWorkloadConf(0);
             setHardwareConf();
-        } else {
+            setSummary();
+        } else if (newValue === 1) {
             setHardwareConf(0);
             setWorkloadConf();
+            setSummary();
+        } else {
+            setHardwareConf();
+            setWorkloadConf();
+            setSummary();
         }
     }
 
@@ -98,6 +106,11 @@ const Main = () => {
                     <TabPanel value={firstLevelTabValue} index={1}>
                         <div className='mt-10 mx-auto'>
                             <TableTest />
+                        </div>
+                    </TabPanel>
+                    <TabPanel value={firstLevelTabValue} index={1}>
+                        <div className='mt-10 mx-auto'>
+                            <Dashboard />
                         </div>
                     </TabPanel>
                 </div>

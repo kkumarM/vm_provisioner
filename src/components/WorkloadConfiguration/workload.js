@@ -40,16 +40,16 @@ function WorkloadConfig(props) {
         dispatch(workloadAction.setCommentValue(comment))
     }
 
-    const handleSubmit = () => {
-        SetSubmit()
+    const handleSubmit = (e) => {
+        SetSubmit(e)
         console.log("Button Clicked")
 
     }
        return (
         
-        <div className="flex py-10 mx-auto justify-between items-center">
+        <div className=" w-full py-10 mx-auto justify-between items-center">
 
-        <div container id="edge_container" className="px-4  mx-auto border border-red-500">
+        <div container id="edge_container" className="border border-red-500">
             <div className="flex w-full justify-between">
                 <FormGroup row className="flex justify-between">                 
 
@@ -138,9 +138,9 @@ function WorkloadConfig(props) {
                     </div>
                 </Grid>
             </Grid>
-            <div className=" px-80 mt-10 mx-auto">
+            <div className=" flex w-full justify-center mt-10 mx-auto">
             <button className="bg-blue-500 rounded-xl px-4 py-2 text-white"
-            onClick={() => handleSubmit()}>Submit</button>
+            onClick={(e) => handleSubmit(e)}>Submit</button>
             </div>                            
         </div>
 
