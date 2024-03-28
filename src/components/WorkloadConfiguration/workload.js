@@ -49,7 +49,7 @@ function WorkloadConfig(props) {
         
         <div className=" w-full py-10 mx-auto justify-between items-center">
 
-        <div container id="edge_container" className="border border-red-500">
+        <div container id="edge_container" className="">
             <div className="flex w-full justify-between">
                 <FormGroup row className="flex justify-between">                 
 

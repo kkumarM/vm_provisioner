@@ -17,8 +17,8 @@ import Moment from "moment";
 import * as hardwareActions from "../../actions/hardwareActions";
 import { useDispatch, useSelector } from "react-redux";
 import { Radio } from "@material-ui/core";
-import DateFnsUtils from '@date-io/date-fns';
-import { subMonths, addMonths } from "date-fns";
+// import DateFnsUtils from '@date-io/date-fns';
+// import { subMonths, addMonths } from "date-fns";
 import { TabPanel } from "@material-tailwind/react";
 
 
@@ -116,7 +116,7 @@ function VM(){
 								<TableCell align="center">{row.User}</TableCell>
 								{row.Reservation ? <TableCell align="center">{Moment(row.Reservation).format("YYYY/MM/DD") }</TableCell> :
 								<TableCell align="center">
-									<MuiPickersUtilsProvider utils={DateFnsUtils}>
+									{/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
 										<KeyboardDatePicker 
 										variant="inline"
 										format="yyyy/mm/dd"
@@ -135,7 +135,7 @@ function VM(){
 											"aria-label": "change date"
 										}}
 										/>
-									</MuiPickersUtilsProvider>
+									</MuiPickersUtilsProvider> */}
 								</TableCell>
 								
 								}

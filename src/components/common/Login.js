@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import * as loginActions from "../../actions/loginAction"
 
 
-const Login = () => {
+function Login (props) {
 	const dispatch = useDispatch();
+
 	const [state, setState] = React.useState({
 	username: "",
 	password: "",
@@ -30,9 +31,34 @@ const Login = () => {
 		username: state.username,
 		password: state.password,
 		};
+    if (state.username !== '' && state.isChecked !== '') {
+      localStorage.username  = state.username;
+      localStorage.password = state.password;
+      localStorage.Checkbox = state.isChecked;
+    } else {
+      localStorage.username = '';
+      localStorage.password = '';
+      localStorage.isChecked = '';
+    }
     dispatch(loginActions.setLoginDetails(user_data));
     dispatch(loginActions.verifyLogin(user_data));
 	}
+
+  useEffect(() => {
+    if (localStorage.getItem("isUserAuthenticated")) {
+      console.log(props, "inside getitem effect")
+      props.history.push("/home");
+    }
+
+    if (localStorage.Checkbox && localStorage.username !== '') {
+      setState({...state, isChecked: true, username: localStorage.username, password: localStorage.password})
+  }
+  }, [props]);
+
+  // useEffect(()=> { 
+  //   dispatch(loginActions.getUserData())
+  // },[])
+
 	return (
 
     <div className="flex items-center justify-center h-screen">

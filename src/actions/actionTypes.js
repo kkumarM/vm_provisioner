@@ -1,5 +1,5 @@
 
-export const BASE_URL = "http://localhost:5001/";
+export const BASE_URL = "http://localhost:5000/";
 
 export const SET_LOGIN_DETAILS = "SET_LOGIN_DETAILS";
 
@@ -23,9 +23,19 @@ export const PROVISIONING_STATUS = "PROVISIONING_STATUS";
 
 export const SET_BENCHMARK_STATUS = "SET_BENCHMARK_STATUS";
 
+export const SET_VM_STATUS = "SET_VM_STATUS";
+
 export const APPEND_JOB = "APPEND_JOB";
 
+export const JOBS_LIST = "JOBS_LIST";
+
 export const UPDATE_JOBS_ARRAY = "UPDATE_JOBS_ARRAY";
+
+export const SAVED_JOBS_STATUS = "SAVED_JOBS_STATUS";
+
+export const SET_ADD_JOB_STATUS = "SET_ADD_JOB_STATUS";
+
+export const SET_VM_RESET_STATUS = "SET_VM_RESET_STATUS";
 
 export const VM_START = "VM_START";
 

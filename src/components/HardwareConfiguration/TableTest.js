@@ -52,15 +52,17 @@ const TableTest = () => {
 
     dispatch(hardwareActions.updateHardwares(newSelected));
   };
-
-  const { vm_rows, vm_rows_status } = useSelector((state) => state.hardware_parameters);
-  console.log(vm_rows.resp_data, "vm_rows")
-
+  
   useEffect(() => {
     console.log("calling use effect")
     dispatch(hardwareActions.getVMList());
 
   }, [])
+
+  const { vm_rows, vm_rows_status } = useSelector((state) => state.hardware_parameters);
+  console.log(vm_rows.resp_data, "vm_rows")
+
+
 
   // console.log(vm_rows.resp_data,"resp data");
   return (
@@ -116,23 +118,7 @@ const TableTest = () => {
                     </TableCell>
                   ) : (
                     <TableCell align="center">
-                      {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <DatePicker
-                          variant="inline"
-                          format="yyyy/MM/dd"
-                          margin="normal"
-                          id="date-picker-inline"
-                          name="reservation"
-                          disablePast
-                          autoOk
-                          error={false}
-                          helperText={null}
-                          className=""
-                          value={selectedDate}
-                          onChange={handleDateChange} 
-                          InputProps={{ readOnly: true }}
-                        />
-                      </MuiPickersUtilsProvider> */}
+                      
                       <LocalizationProvider dateAdapter={AdapterDayjs}>
                           <DatePicker 
                           label="Reserve" 

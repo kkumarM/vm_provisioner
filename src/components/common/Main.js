@@ -3,7 +3,7 @@ import { Tabs, Tab, Grid, Typography, Box } from '@material-ui/core'
 import WorkloadConfig from "../WorkloadConfiguration/workload"
 import VM from "../HardwareConfiguration/VM"
 import TableTest from '../HardwareConfiguration/TableTest'
-import Dashboard from '../SummaryConfiguration/Dashboard'
+import DashboardTest from '../SummaryConfiguration/DashboardTest'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -44,7 +44,7 @@ const Main = () => {
         } else {
             setHardwareConf();
             setWorkloadConf();
-            setSummary();
+            setSummary(0);
         }
     }
 
@@ -65,7 +65,7 @@ const Main = () => {
     return (
 
         <div className='flex-row py-28'>
-            <div className='container place-items-center mx-auto space-x-4 border border-blue-400'>
+            <div className='container place-items-center mx-auto space-x-4'>
                 {/* <Grid container spacing={0} alignItems="center" className='flex place-content-center mx-auto w-full rounded-md'> */}
 
                 {/* <Grid item sm={6} className="space-x-4"> */}
@@ -80,6 +80,7 @@ const Main = () => {
                         <Tab className='w-full hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label="Workload Configuration" />
                         <Tab className='w-full hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label="Hardware Configuration" />
                         <Tab className='w-full hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label="Dashboard" />
+                        <Tab className='w-full hover:bg-white hover:rounded-xl hover:p-2 hover:font-bold' label="Results & Reports" />
                         {/* </div> */}
 
                     </Tabs>
@@ -108,9 +109,10 @@ const Main = () => {
                             <TableTest />
                         </div>
                     </TabPanel>
-                    <TabPanel value={firstLevelTabValue} index={1}>
+                    <TabPanel value={firstLevelTabValue} index={2}>
                         <div className='mt-10 mx-auto'>
-                            <Dashboard />
+                            
+                            <DashboardTest />
                         </div>
                     </TabPanel>
                 </div>
