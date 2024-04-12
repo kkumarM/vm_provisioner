@@ -47,7 +47,7 @@ function Login (props) {
   useEffect(() => {
     if (localStorage.getItem("isUserAuthenticated")) {
       console.log(props, "inside getitem effect")
-      props.history.push("/home");
+      // props.history.push("/home");
     }
 
     if (localStorage.Checkbox && localStorage.username !== '') {

@@ -147,14 +147,14 @@ function WorkloadConfig(props) {
 
                     </FormGroup>
 
-                    <FormGroup row className="mb-4 border border-red-400">
+                    {/* <FormGroup row className="mb-4 border border-red-400">
 
                         <FormLabel className="font-bold text-2xl mt-2 mx-10">Guest Application 2:</FormLabel>
 
                         <FormControl className="flex">
                             <div className="flex justify-between">
                                 <input value="test" type="checkbox" />
-                                <span className="mx-auto">CQI </span>
+                                <span className="">CQI </span>
                             </div>
                             <div className="flex justify-between">
                                 <input value="test" type="checkbox" />
@@ -166,7 +166,7 @@ function WorkloadConfig(props) {
                             </div>
                         </FormControl>
 
-                    </FormGroup>
+                    </FormGroup> */}
                 </div>
 
             </div>
